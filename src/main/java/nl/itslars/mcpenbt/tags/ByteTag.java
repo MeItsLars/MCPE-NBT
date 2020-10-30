@@ -22,6 +22,10 @@ public class ByteTag extends Tag {
         return value;
     }
 
+    public void setValue(byte value) {
+        this.value = value;
+    }
+
     /**
      * Converts the ByteTag to a byte array.
      * 1 byte is used, the actual byte that is represented by this class.

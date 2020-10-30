@@ -24,6 +24,14 @@ public class IntArrayTag extends Tag {
         return values;
     }
 
+    public void setValues(int[] values) {
+        this.values = values;
+    }
+
+    public void setValue(int i, int value) {
+        values[i] = value;
+    }
+
     /**
      * Converts the IntArrayTag object to a byte array.
      * 4 bytes for the length of the array, followed by the integers (4 bytes each)

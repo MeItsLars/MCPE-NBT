@@ -24,6 +24,10 @@ public class IntTag extends Tag {
         return value;
     }
 
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     /**
      * Converts the IntTag to a byte array.
      * 4 bytes are used, for the int that is represented.

@@ -24,6 +24,10 @@ public class StringTag extends Tag {
         return value;
     }
 
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     /**
      * Converts the StringTag to a byte array.
      * 2 bytes are used to indicate the string length, followed by the actual string bytes

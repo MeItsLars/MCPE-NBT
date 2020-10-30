@@ -24,6 +24,10 @@ public class LongTag extends Tag {
         return value;
     }
 
+    public void setValue(long value) {
+        this.value = value;
+    }
+
     /**
      * Converts the LongTag to a byte array.
      * 8 bytes are used, for the long that is represented.

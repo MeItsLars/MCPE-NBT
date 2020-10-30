@@ -24,6 +24,10 @@ public class DoubleTag extends Tag {
         return value;
     }
 
+    public void setValue(double value) {
+        this.value = value;
+    }
+
     /**
      * Converts the DoubleTag to a byte array.
      * 8 bytes are used, for the double that is represented.

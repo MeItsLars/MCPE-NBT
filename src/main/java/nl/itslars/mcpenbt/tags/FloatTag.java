@@ -24,6 +24,10 @@ public class FloatTag extends Tag {
         return value;
     }
 
+    public void setValue(float value) {
+        this.value = value;
+    }
+
     /**
      * Converts the FloatTag to a byte array.
      * 4 bytes are used, for the float that is represented.

@@ -24,6 +24,14 @@ public class ByteArrayTag extends Tag {
         return values;
     }
 
+    public void setValues(byte[] values) {
+        this.values = values;
+    }
+
+    public void setValue(int i, byte value) {
+        values[i] = value;
+    }
+
     /**
      * Converts the ByteArrayTag object to a byte array.
      * 4 bytes for the length of the array, followed by the bytes

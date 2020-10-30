@@ -24,6 +24,10 @@ public class ShortTag extends Tag {
         return value;
     }
 
+    public void setValue(short value) {
+        this.value = value;
+    }
+
     /**
      * Converts the ShortTag to a byte array.
      * 2 bytes are used, for the short that is represented.
