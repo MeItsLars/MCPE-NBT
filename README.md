@@ -1,10 +1,10 @@
 # MCPE-NBT
-Using this library, you can parse NBT data into Java objects.
+Using this library, you can parse NBT data used by Minecraft PE/Windows 10/Bedrock Edition into Java objects.
 This NBT data can then be changed, removed, and you can add new NBT data.
 These Java objects can then also be converted back to a byte array, and written to a file.
 
 # Formatting
-A little bit of background information on how MCPE (or Bedrock edition/Windows 10 edition) stores NBT:
+A little bit of background information on how MCPE stores NBT:
 This is how MCPE represents NBT tags:
 ```
 id    name             length in bytes, or format
