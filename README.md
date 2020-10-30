@@ -29,3 +29,14 @@ Each file begins with an 8 byte header. The first 4 bytes represent the type of 
 Next, is the parent compound tag. Thus, each file looks like this:
 
 [FILE_TYPE (4 bytes)][FILE_LENGTH (4 bytes)][COMPOUND]
+
+# Usage
+You can use this library by cloning it, and building it with maven.
+Then, add the following artifact to your ``pom.xml``:
+```xml
+<dependency>
+    <groupId>nl.itslars</groupId>
+    <artifactId>mcpe-nbt</artifactId>
+    <version>1.0</version>
+</dependency>
+```
