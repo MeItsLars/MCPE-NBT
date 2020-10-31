@@ -1,5 +1,6 @@
 package nl.itslars.mcpenbt;
 
+import nl.itslars.mcpenbt.enums.TagType;
 import nl.itslars.mcpenbt.tags.Tag;
 import nl.itslars.mcpenbt.enums.HeaderType;
 
@@ -20,13 +21,14 @@ public class NBTUtil {
 
     /**
      * Reads the NBT in the given file
+     * @param expectedType The expected resulting tag type
      * @param header Whether the NBT contains a header
      * @param path The file path
      * @return The resulting NBT Tag
      */
-    public static Tag read(boolean header, Path path) {
+    public static Tag read(TagType expectedType, boolean header, Path path) {
         try {
-            return read(header, Files.readAllBytes(path));
+            return read(expectedType, header, Files.readAllBytes(path));
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -35,28 +37,30 @@ public class NBTUtil {
 
     /**
      * Reads the NBT from the given byte array
+     * @param expectedType The expected resulting tag type
      * @param header Whether the NBT contains a header
      * @param bytes The bytes
      * @return The resulting NBT Tag
      */
-    public static Tag read(boolean header, byte... bytes) {
-        return read(header, new ByteArrayInputStream(bytes));
+    public static Tag read(TagType expectedType, boolean header, byte... bytes) {
+        return read(expectedType, header, new ByteArrayInputStream(bytes));
     }
 
     /**
      * Reads the NBT from the given input stream
+     * @param expectedType The expected resulting tag type
      * @param header Whether the NBT contains a header
      * @param stream The input stream
      * @return The resulting NBT Tag
      */
-    public static Tag read(boolean header, InputStream stream) {
+    public static Tag read(TagType expectedType, boolean header, InputStream stream) {
         try {
             // Ignore the first 8 header bytes
             if (header && stream.skip(8) != 8) {
                 throw new IllegalStateException("No header found.");
             }
 
-            return Tag.read(stream);
+            return Tag.read(stream, expectedType.getId());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
