@@ -21,6 +21,36 @@ public class NBTUtil {
 
     /**
      * Reads the NBT in the given file
+     * @param header Whether the NBT contains a header
+     * @param path The file path
+     * @return The resulting NBT Tag
+     */
+    public static Tag read(boolean header, Path path) {
+        return read(null, header, path);
+    }
+
+    /**
+     * Reads the NBT from the given byte array
+     * @param header Whether the NBT contains a header
+     * @param bytes The bytes
+     * @return The resulting NBT Tag
+     */
+    public static Tag read(boolean header, byte... bytes) {
+        return read(null, header, new ByteArrayInputStream(bytes));
+    }
+
+    /**
+     * Reads the NBT from the given input stream
+     * @param header Whether the NBT contains a header
+     * @param stream The input stream
+     * @return The resulting NBT Tag
+     */
+    public static Tag read(boolean header, InputStream stream) {
+        return read(null, header, stream);
+    }
+
+    /**
+     * Reads the NBT in the given file
      * @param expectedType The expected resulting tag type
      * @param header Whether the NBT contains a header
      * @param path The file path
@@ -60,7 +90,7 @@ public class NBTUtil {
                 throw new IllegalStateException("No header found.");
             }
 
-            return Tag.read(stream, expectedType.getId());
+            return expectedType == null ? Tag.read(stream) : Tag.read(stream, expectedType.getId());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
