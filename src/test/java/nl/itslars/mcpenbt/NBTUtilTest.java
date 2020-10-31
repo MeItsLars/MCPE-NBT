@@ -151,7 +151,7 @@ public class NBTUtilTest {
         // Convert the original tag to a byte array
         byte[] result1 = NBTUtil.write(tag);
         // Convert the byte array back to a tag
-        Tag tag2 = NBTUtil.read(false, result1);
+        Tag tag2 = NBTUtil.read(tag.getType(), false, result1);
         // Convert the newly created tag back to a new byte array
         byte[] result2 = NBTUtil.write(tag2);
 
@@ -167,7 +167,7 @@ public class NBTUtilTest {
         // Generate random tags with header, and check their equality
         Tag tag1 = new IntTag(UUID.randomUUID().toString().substring(0, 10), ThreadLocalRandom.current().nextInt());
         byte[] result1 = NBTUtil.write(tag1, HeaderType.LEVEL_DAT);
-        Tag tag2 =  NBTUtil.read(true, result1);
+        Tag tag2 =  NBTUtil.read(tag1.getType(), true, result1);
         byte[] result2 = NBTUtil.write(tag2, HeaderType.LEVEL_DAT);
         Assert.assertArrayEquals(result1, result2);
     }
@@ -181,7 +181,7 @@ public class NBTUtilTest {
         // Read the file into a byte array
         byte[] originalLevelDat = Files.readAllBytes(new File("./src/test/level.dat").toPath());
         // Convert the byte array back to a tag
-        Tag tag = NBTUtil.read(true, originalLevelDat);
+        Tag tag = NBTUtil.read(TagType.TAG_COMPOUND, true, originalLevelDat);
         // Convert the tag to a byte array
         byte[] newLevelDat = NBTUtil.write(tag, HeaderType.LEVEL_DAT);
 
