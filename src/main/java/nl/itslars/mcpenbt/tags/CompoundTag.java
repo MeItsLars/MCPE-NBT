@@ -24,6 +24,15 @@ public class CompoundTag extends Tag implements Iterable<Tag> {
         return elements;
     }
 
+    /**
+     * Retrieves the tag with the given name value
+     * @param name The name value
+     * @return An optional containing the tag if found, and empty otherwise
+     */
+    public Optional<Tag> getByName(String name) {
+        return elements.stream().filter(tag -> tag.getName().equals(name)).findFirst();
+    }
+
     @Override
     public Iterator<Tag> iterator() {
         return elements.iterator();
