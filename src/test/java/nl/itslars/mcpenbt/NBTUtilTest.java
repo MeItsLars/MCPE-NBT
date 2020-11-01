@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -170,6 +171,14 @@ public class NBTUtilTest {
         Tag tag2 =  NBTUtil.read(true, result1);
         byte[] result2 = NBTUtil.write(tag2, HeaderType.LEVEL_DAT);
         Assert.assertArrayEquals(result1, result2);
+    }
+
+    @Test
+    public void testEquality() {
+        Tag tag1 = new CompoundTag(UUID.randomUUID().toString().substring(0, 10), Arrays.asList(new IntTag(UUID.randomUUID().toString().substring(0, 10), 3)));
+        Tag tag2 = new CompoundTag(UUID.randomUUID().toString().substring(0, 10), Arrays.asList(new IntTag(UUID.randomUUID().toString().substring(0, 10), 3)));
+
+        Assert.assertEquals(tag2, tag1);
     }
 
     /**
