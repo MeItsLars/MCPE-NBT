@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Arrays;
 
 /**
  * Class for representing an Integer Array NBT Tag
@@ -17,7 +18,7 @@ public class IntArrayTag extends Tag {
 
     public IntArrayTag(String name, int... values) {
         super(name);
-        this.values = values;
+        this.values = values == null ? new int[]{} : values;
     }
 
     public int[] getValues() {
@@ -52,6 +53,19 @@ public class IntArrayTag extends Tag {
     @Override
     public TagType getType() {
         return TagType.TAG_INT_ARRAY;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        IntArrayTag that = (IntArrayTag) o;
+        return Arrays.equals(values, that.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(values);
     }
 
     /**

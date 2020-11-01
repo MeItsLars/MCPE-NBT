@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Objects;
 
 /**
  * Class for representing a Long NBT Tag
@@ -41,6 +42,19 @@ public class LongTag extends Tag {
     @Override
     public TagType getType() {
         return TagType.TAG_LONG;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LongTag longTag = (LongTag) o;
+        return value == longTag.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 
     /**

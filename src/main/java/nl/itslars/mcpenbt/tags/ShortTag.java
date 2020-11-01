@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Objects;
 
 /**
  * Class for representing a Short NBT Tag
@@ -41,6 +42,19 @@ public class ShortTag extends Tag {
     @Override
     public TagType getType() {
         return TagType.TAG_SHORT;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShortTag shortTag = (ShortTag) o;
+        return value == shortTag.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 
     /**

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Objects;
 
 /**
  * Abstract class for representing any NBT Tag
@@ -163,6 +164,12 @@ public abstract class Tag {
         // Cast and return
         return (T) this;
     }
+
+    @Override
+    public abstract boolean equals(Object o);
+
+    @Override
+    public abstract int hashCode();
 
     /**
      * Converts the given stream to a Tag

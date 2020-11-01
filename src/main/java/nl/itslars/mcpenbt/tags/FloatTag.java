@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Objects;
 
 /**
  * Class for representing a Float NBT Tag
@@ -41,6 +42,19 @@ public class FloatTag extends Tag {
     @Override
     public TagType getType() {
         return TagType.TAG_FLOAT;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FloatTag floatTag = (FloatTag) o;
+        return Float.compare(floatTag.value, value) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 
     /**

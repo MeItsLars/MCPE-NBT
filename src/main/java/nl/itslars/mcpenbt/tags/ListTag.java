@@ -57,6 +57,20 @@ public class ListTag<T extends Tag> extends Tag implements Iterable<T> {
         return TagType.TAG_LIST;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ListTag<?> listTag = (ListTag<?>) o;
+        return elementType == listTag.elementType &&
+                elements.equals(listTag.elements);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(elementType, elements);
+    }
+
     /**
      * Converts the given input stream to a ListTag
      * @param name The name that this tag should get

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Arrays;
 
 /**
  * Class for representing a Byte Array NBT Tag
@@ -17,7 +18,7 @@ public class ByteArrayTag extends Tag {
 
     public ByteArrayTag(String name, byte... values) {
         super(name);
-        this.values = values;
+        this.values = values == null ? new byte[]{} : values;
     }
 
     public byte[] getValues() {
@@ -45,6 +46,19 @@ public class ByteArrayTag extends Tag {
     @Override
     public TagType getType() {
         return TagType.TAG_BYTE_ARRAY;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ByteArrayTag that = (ByteArrayTag) o;
+        return Arrays.equals(values, that.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(values);
     }
 
     /**

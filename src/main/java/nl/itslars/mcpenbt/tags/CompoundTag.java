@@ -63,6 +63,19 @@ public class CompoundTag extends Tag implements Iterable<Tag> {
         return TagType.TAG_COMPOUND;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CompoundTag that = (CompoundTag) o;
+        return elements.equals(that.elements);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(elements);
+    }
+
     /**
      * Converts the given input stream to a CompoundTag
      * @param name The name that this tag should get

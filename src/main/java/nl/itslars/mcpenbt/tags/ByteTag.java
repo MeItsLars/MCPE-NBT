@@ -4,6 +4,7 @@ import nl.itslars.mcpenbt.enums.TagType;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 /**
  * Class for representing a Byte NBT Tag
@@ -39,6 +40,19 @@ public class ByteTag extends Tag {
     @Override
     public TagType getType() {
         return TagType.TAG_BYTE;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ByteTag byteTag = (ByteTag) o;
+        return value == byteTag.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 
     /**
