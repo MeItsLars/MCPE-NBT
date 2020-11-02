@@ -33,6 +33,34 @@ public class CompoundTag extends Tag implements Iterable<Tag> {
         return elements.stream().filter(tag -> tag.getName().equals(name)).findFirst();
     }
 
+    /**
+     * Adds the given tag to the back of the elements list.
+     * @param tag The tag
+     */
+    public void add(Tag tag) {
+        elements.add(tag);
+    }
+
+    /**
+     * Adds the given tag to the element list. If there already existed a tag with the given name, that tag is removed
+     * from the list.
+     * @param name The name of the tag
+     * @param tag The new tag
+     */
+    public void change(String name, Tag tag) {
+        remove(name);
+        add(tag);
+    }
+
+    /**
+     * Removes the first occurrence of a tag with the given name from the elements list.
+     * @param name The tag name
+     */
+    public void remove(String name) {
+        Optional<Tag> optionalTag = getByName(name);
+        optionalTag.ifPresent(value -> elements.remove(value));
+    }
+
     @Override
     public Iterator<Tag> iterator() {
         return elements.iterator();
