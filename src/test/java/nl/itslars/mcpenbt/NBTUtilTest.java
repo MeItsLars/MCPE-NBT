@@ -8,10 +8,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -24,7 +21,7 @@ public class NBTUtilTest {
      */
     @Test
     public void testByteTag() {
-        testTag(new ByteTag(UUID.randomUUID().toString().substring(0, 10), (byte) ThreadLocalRandom.current().nextInt()));
+        testTag(new ByteTag("test", (byte) ThreadLocalRandom.current().nextInt()));
     }
 
 
@@ -33,7 +30,7 @@ public class NBTUtilTest {
      */
     @Test
     public void testShortTag() {
-        testTag(new ShortTag(UUID.randomUUID().toString().substring(0, 10), (short) ThreadLocalRandom.current().nextInt()));
+        testTag(new ShortTag("test", (short) ThreadLocalRandom.current().nextInt()));
     }
 
 
@@ -42,7 +39,7 @@ public class NBTUtilTest {
      */
     @Test
     public void testIntTag() {
-        testTag(new IntTag(UUID.randomUUID().toString().substring(0, 10), ThreadLocalRandom.current().nextInt()));
+        testTag(new IntTag("test", ThreadLocalRandom.current().nextInt()));
     }
 
 
@@ -51,7 +48,7 @@ public class NBTUtilTest {
      */
     @Test
     public void testLongTag() {
-        testTag(new LongTag(UUID.randomUUID().toString().substring(0, 10), ThreadLocalRandom.current().nextLong()));
+        testTag(new LongTag("test", ThreadLocalRandom.current().nextLong()));
     }
 
 
@@ -60,7 +57,7 @@ public class NBTUtilTest {
      */
     @Test
     public void testFloatTag() {
-        testTag(new FloatTag(UUID.randomUUID().toString().substring(0, 10), ThreadLocalRandom.current().nextFloat()));
+        testTag(new FloatTag("test", ThreadLocalRandom.current().nextFloat()));
     }
 
 
@@ -69,7 +66,7 @@ public class NBTUtilTest {
      */
     @Test
     public void testDoubleTag() {
-        testTag(new DoubleTag(UUID.randomUUID().toString().substring(0, 10), ThreadLocalRandom.current().nextDouble()));
+        testTag(new DoubleTag("test", ThreadLocalRandom.current().nextDouble()));
     }
 
 
@@ -85,7 +82,7 @@ public class NBTUtilTest {
             array[i] = (byte) ThreadLocalRandom.current().nextInt();
         }
 
-        testTag(new ByteArrayTag(UUID.randomUUID().toString().substring(0, 10), array));
+        testTag(new ByteArrayTag("test", array));
     }
 
 
@@ -94,7 +91,7 @@ public class NBTUtilTest {
      */
     @Test
     public void testStringTag() {
-        testTag(new StringTag(UUID.randomUUID().toString().substring(0, 10), UUID.randomUUID().toString().substring(0, 10)));
+        testTag(new StringTag("test", "test"));
     }
 
 
@@ -109,7 +106,7 @@ public class NBTUtilTest {
             elements.add(new FloatTag(null, ThreadLocalRandom.current().nextFloat()));
         }
 
-        testTag(new ListTag<>(UUID.randomUUID().toString().substring(0, 10), TagType.TAG_FLOAT, elements));
+        testTag(new ListTag<>("test", TagType.TAG_FLOAT, elements));
     }
 
 
@@ -121,10 +118,10 @@ public class NBTUtilTest {
         // Generate a random list of elements
         List<Tag> elements = new ArrayList<>();
         for (int i = 0; i < ThreadLocalRandom.current().nextInt(100); i++) {
-            elements.add(new FloatTag(UUID.randomUUID().toString().substring(0, 10), ThreadLocalRandom.current().nextFloat()));
+            elements.add(new FloatTag("test", ThreadLocalRandom.current().nextFloat()));
         }
 
-        testTag(new CompoundTag(UUID.randomUUID().toString().substring(0, 10), elements));
+        testTag(new CompoundTag("test", elements));
     }
 
 
@@ -140,7 +137,7 @@ public class NBTUtilTest {
             array[i] = ThreadLocalRandom.current().nextInt();
         }
 
-        testTag(new IntArrayTag(UUID.randomUUID().toString().substring(0, 10), array));
+        testTag(new IntArrayTag("test", array));
     }
 
     /**
@@ -166,7 +163,7 @@ public class NBTUtilTest {
     @Test
     public void testHeader() {
         // Generate random tags with header, and check their equality
-        Tag tag1 = new IntTag(UUID.randomUUID().toString().substring(0, 10), ThreadLocalRandom.current().nextInt());
+        Tag tag1 = new IntTag("test", ThreadLocalRandom.current().nextInt());
         byte[] result1 = NBTUtil.write(tag1, HeaderType.LEVEL_DAT);
         Tag tag2 =  NBTUtil.read(true, result1);
         byte[] result2 = NBTUtil.write(tag2, HeaderType.LEVEL_DAT);
@@ -175,8 +172,8 @@ public class NBTUtilTest {
 
     @Test
     public void testEquality() {
-        Tag tag1 = new CompoundTag(UUID.randomUUID().toString().substring(0, 10), Arrays.asList(new IntTag(UUID.randomUUID().toString().substring(0, 10), 3)));
-        Tag tag2 = new CompoundTag(UUID.randomUUID().toString().substring(0, 10), Arrays.asList(new IntTag(UUID.randomUUID().toString().substring(0, 10), 3)));
+        Tag tag1 = new CompoundTag("test", Collections.singletonList(new IntTag("test", 3)));
+        Tag tag2 = new CompoundTag("test", Collections.singletonList(new IntTag("test", 3)));
 
         Assert.assertEquals(tag2, tag1);
     }
