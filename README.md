@@ -20,7 +20,7 @@ So, add the following repository & dependency to your ``pom.xml``:
 	    <version>1.0</version>
 	</dependency>
 ```
-All interaction goes via the main ``NBTUtil`` class. This class can read files, byte arrays and input streams into tags. Also, it can write tags to byte arrays. For more information, check the class. All methods are documented.
+All interaction goes via the main (static) ``NBTUtil`` class. This class can read files, byte arrays and input streams into tags. Also, it can write tags to byte arrays. For more information, check the class. All methods are documented.
 
 # Formatting
 A little bit of background information on how MCPE stores NBT:
