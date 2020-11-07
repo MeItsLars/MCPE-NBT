@@ -48,8 +48,8 @@ public class IntTag extends Tag {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        IntTag intTag = (IntTag) o;
-        return value == intTag.value;
+        IntTag that = (IntTag) o;
+        return value == that.value && ((getName() == null && that.getName() == null) || (getName().equals(that.getName())));
     }
 
     @Override

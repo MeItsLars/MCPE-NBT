@@ -10,6 +10,7 @@ import java.util.*;
 
 /**
  * Class for representing a List NBT Tag
+ *
  * @param <T> The Tag type that is in this list
  */
 public class ListTag<T extends Tag> extends Tag implements Iterable<T> {
@@ -37,6 +38,7 @@ public class ListTag<T extends Tag> extends Tag implements Iterable<T> {
     /**
      * Converts the ListTag object to a byte array.
      * 1 byte for the type of tag, 4 bytes for the list length, and additionally all list elements
+     *
      * @return The resulting byte array
      */
     @Override
@@ -61,9 +63,9 @@ public class ListTag<T extends Tag> extends Tag implements Iterable<T> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ListTag<?> listTag = (ListTag<?>) o;
-        return elementType == listTag.elementType &&
-                elements.equals(listTag.elements);
+        ListTag<?> that = (ListTag<?>) o;
+        return elementType == that.elementType &&
+                elements.equals(that.elements) && ((getName() == null && that.getName() == null) || (getName().equals(that.getName())));
     }
 
     @Override
@@ -73,7 +75,8 @@ public class ListTag<T extends Tag> extends Tag implements Iterable<T> {
 
     /**
      * Converts the given input stream to a ListTag
-     * @param name The name that this tag should get
+     *
+     * @param name   The name that this tag should get
      * @param stream The input stream
      * @return The resulting tag
      * @throws IOException If the InputStream threw an exception

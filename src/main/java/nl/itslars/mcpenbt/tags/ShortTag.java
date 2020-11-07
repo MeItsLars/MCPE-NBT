@@ -48,8 +48,8 @@ public class ShortTag extends Tag {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ShortTag shortTag = (ShortTag) o;
-        return value == shortTag.value;
+        ShortTag that = (ShortTag) o;
+        return value == that.value && ((getName() == null && that.getName() == null) || (getName().equals(that.getName())));
     }
 
     @Override

@@ -96,7 +96,7 @@ public class CompoundTag extends Tag implements Iterable<Tag> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CompoundTag that = (CompoundTag) o;
-        return elements.equals(that.elements);
+        return elements.equals(that.elements) && ((getName() == null && that.getName() == null) || (getName().equals(that.getName())));
     }
 
     @Override

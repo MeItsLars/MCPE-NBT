@@ -60,7 +60,7 @@ public class IntArrayTag extends Tag {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         IntArrayTag that = (IntArrayTag) o;
-        return Arrays.equals(values, that.values);
+        return Arrays.equals(values, that.values) && ((getName() == null && that.getName() == null) || (getName().equals(that.getName())));
     }
 
     @Override

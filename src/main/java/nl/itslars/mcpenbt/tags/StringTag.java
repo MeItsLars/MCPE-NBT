@@ -48,8 +48,8 @@ public class StringTag extends Tag {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StringTag stringTag = (StringTag) o;
-        return value.equals(stringTag.value);
+        StringTag that = (StringTag) o;
+        return value.equals(that.value) && ((getName() == null && that.getName() == null) || (getName().equals(that.getName())));
     }
 
     @Override

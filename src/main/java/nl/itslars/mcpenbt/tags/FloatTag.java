@@ -48,8 +48,8 @@ public class FloatTag extends Tag {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FloatTag floatTag = (FloatTag) o;
-        return Float.compare(floatTag.value, value) == 0;
+        FloatTag that = (FloatTag) o;
+        return Float.compare(that.value, value) == 0 && ((getName() == null && that.getName() == null) || (getName().equals(that.getName())));
     }
 
     @Override

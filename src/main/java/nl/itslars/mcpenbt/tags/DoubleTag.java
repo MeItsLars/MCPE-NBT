@@ -48,8 +48,8 @@ public class DoubleTag extends Tag {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DoubleTag doubleTag = (DoubleTag) o;
-        return Double.compare(doubleTag.value, value) == 0;
+        DoubleTag that = (DoubleTag) o;
+        return Double.compare(that.value, value) == 0 && ((getName() == null && that.getName() == null) || (getName().equals(that.getName())));
     }
 
     @Override

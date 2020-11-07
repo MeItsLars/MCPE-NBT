@@ -46,8 +46,8 @@ public class ByteTag extends Tag {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ByteTag byteTag = (ByteTag) o;
-        return value == byteTag.value;
+        ByteTag that = (ByteTag) o;
+        return value == that.value && ((getName() == null && that.getName() == null) || (getName().equals(that.getName())));
     }
 
     @Override
