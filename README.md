@@ -53,12 +53,19 @@ S -> [int][int][TAG_Compound]
 ```
 
 # Usage
-You can use this library by cloning it, and building it with maven.
-Then, add the following artifact to your ``pom.xml``:
+You can use this library by cloning it, and building it with maven. The maven artifact is hosted on Jitpack.
+So, add the following repository & dependency to your ``pom.xml``:
 ```xml
-<dependency>
-    <groupId>nl.itslars</groupId>
-    <artifactId>mcpe-nbt</artifactId>
-    <version>1.0</version>
-</dependency>
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
+	<dependency>
+	    <groupId>com.github.MeItsLars</groupId>
+	    <artifactId>MCPE-NBT</artifactId>
+	    <version>1.0</version>
+	</dependency>
 ```
