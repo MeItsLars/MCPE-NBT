@@ -17,7 +17,7 @@ So, add the following repository & dependency to your ``pom.xml``:
 	<dependency>
 	    <groupId>com.github.MeItsLars</groupId>
 	    <artifactId>MCPE-NBT</artifactId>
-	    <version>1.0</version>
+	    <version>1.4</version>
 	</dependency>
 ```
 All interaction goes via the main (static) ``NBTUtil`` class. This class can read files, byte arrays and input streams into tags. Also, it can write tags to byte arrays. For more information, check the class. All methods are documented.
