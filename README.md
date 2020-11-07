@@ -3,6 +3,25 @@ Using this library, you can parse NBT data used by Minecraft PE/Windows 10/Bedro
 This NBT data can then be changed, removed, and you can add new NBT data.
 These Java objects can then also be converted back to a byte array, and written to a file.
 
+# Usage
+You can use this library by cloning it, and building it with maven. The maven artifact is hosted on Jitpack.
+So, add the following repository & dependency to your ``pom.xml``:
+```xml
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
+	<dependency>
+	    <groupId>com.github.MeItsLars</groupId>
+	    <artifactId>MCPE-NBT</artifactId>
+	    <version>1.0</version>
+	</dependency>
+```
+All interaction goes via the main ``NBTUtil`` class. This class can read files, byte arrays and input streams into tags. Also, it can write tags to byte arrays. For more information, check the class. All methods are documented.
+
 # Formatting
 A little bit of background information on how MCPE stores NBT:
 This is how MCPE represents NBT tags:
@@ -50,22 +69,4 @@ Each file begins with an 8 byte header. The first 4 bytes represent the type of 
 Next, is the parent compound tag. Thus, the CFG for a file is:
 ```
 S -> [int][int][TAG_Compound]
-```
-
-# Usage
-You can use this library by cloning it, and building it with maven. The maven artifact is hosted on Jitpack.
-So, add the following repository & dependency to your ``pom.xml``:
-```xml
-	<repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-
-	<dependency>
-	    <groupId>com.github.MeItsLars</groupId>
-	    <artifactId>MCPE-NBT</artifactId>
-	    <version>1.0</version>
-	</dependency>
 ```
