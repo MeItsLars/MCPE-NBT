@@ -37,7 +37,7 @@ public class StringTag extends Tag {
     @Override
     protected byte[] toBytes() {
         byte[] stringBytes = value.getBytes();
-        return ByteBuffer.allocate(2 + stringBytes.length).order(ByteOrder.LITTLE_ENDIAN).putShort((short) value.length()).put(stringBytes).array();
+        return ByteBuffer.allocate(2 + stringBytes.length).order(ByteOrder.LITTLE_ENDIAN).putShort((short) stringBytes.length).put(stringBytes).array();
     }
 
     @Override

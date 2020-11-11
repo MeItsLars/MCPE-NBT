@@ -6,7 +6,7 @@
 
     <groupId>nl.itslars</groupId>
     <artifactId>mcpe-nbt</artifactId>
-    <version>1.5</version>
+    <version>1.6</version>
 
     <dependencies>
         <dependency>

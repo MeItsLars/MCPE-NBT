@@ -91,7 +91,7 @@ public class NBTUtilTest {
      */
     @Test
     public void testStringTag() {
-        testTag(new StringTag("test", "test"));
+        testTag(new StringTag("test", "test§"));
     }
 
 
